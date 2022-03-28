@@ -124,7 +124,7 @@ void MainMenuScene::playEasy()
 */
 void MainMenuScene::showInstructions()
 {
-	// Create message box that displays instructions
+	//Create message box that displays instructions
 	QMessageBox* mBox = new QMessageBox();
 	mBox->setText("Up Arrow - Jump\nLeft Arrow - Move Left\nRight Arrow - Move Right");
 	mBox->setIcon(QMessageBox::Information);
@@ -137,7 +137,7 @@ void MainMenuScene::showInstructions()
 */
 void MainMenuScene::showCredits()
 {
-	// Create Message box that displays credits
+	//Create Message box that displays credits
 	QMessageBox* mBox = new QMessageBox();
 	mBox->setText("David Badiei - Team Leader/Programmer\nNathan Vuong - Sound/Documentation\nChidubem Dimanochie - Music/Main Menu\nAndrew Miceli - Graphics Design");
 	mBox->setIcon(QMessageBox::Information);
