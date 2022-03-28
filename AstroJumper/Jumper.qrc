@@ -15,5 +15,6 @@
         <file>Sounds/deathtest.mp3</file>
         <file>Sounds/gunShot.mp3</file>
         <file>Sounds/BGMusic.mp3</file>
+        <file>Sounds/walking.mp3</file>
     </qresource>
 </RCC>

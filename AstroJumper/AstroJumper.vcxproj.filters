@@ -108,5 +108,8 @@
     <Media Include="Sounds\BGMusic.mp3">
       <Filter>Resource files\Sounds</Filter>
     </Media>
+    <Media Include="Sounds\walking.mp3">
+      <Filter>Resource files\Sounds</Filter>
+    </Media>
   </ItemGroup>
 </Project>

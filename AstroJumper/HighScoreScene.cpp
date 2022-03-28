@@ -14,22 +14,22 @@ HighScoreScene::HighScoreScene(int score, QGraphicsScene *parent)
 
 	for (int i = 0; i < 5; i++)
 	{
-		top5Players[i] = new QGraphicsTextItem();
-		top5Players[i]->setPlainText(returnPlayerNameOrScore(i,true));
-		top5Players[i]->setPos(100, 100 + (75 * i));
-		top5Players[i]->setDefaultTextColor(Qt::white);
-		top5Players[i]->setFont(QFont("Arial", 24));
-		addItem(top5Players[i]);
+		top5PlayersScore[0][i] = new QGraphicsTextItem();
+		top5PlayersScore[0][i]->setPlainText(returnPlayerNameOrScore(i,true));
+		top5PlayersScore[0][i]->setPos(100, 100 + (75 * i));
+		top5PlayersScore[0][i]->setDefaultTextColor(Qt::white);
+		top5PlayersScore[0][i]->setFont(QFont("Arial", 24));
+		addItem(top5PlayersScore[0][i]);
 	}
 
 	for (int i = 0; i < 5; i++)
 	{
-		top5PlayersScore[i] = new QGraphicsTextItem();
-		top5PlayersScore[i]->setPlainText(returnPlayerNameOrScore(i,false));
-		top5PlayersScore[i]->setPos(650, 100 + (75 * i));
-		top5PlayersScore[i]->setDefaultTextColor(Qt::white);
-		top5PlayersScore[i]->setFont(QFont("Arial", 24));
-		addItem(top5PlayersScore[i]);
+		top5PlayersScore[1][i] = new QGraphicsTextItem();
+		top5PlayersScore[1][i]->setPlainText(returnPlayerNameOrScore(i,false));
+		top5PlayersScore[1][i]->setPos(650, 100 + (75 * i));
+		top5PlayersScore[1][i]->setDefaultTextColor(Qt::white);
+		top5PlayersScore[1][i]->setFont(QFont("Arial", 24));
+		addItem(top5PlayersScore[1][i]);
 	}
 	
 	if (getPosInFile(score) < 5)
@@ -72,11 +72,20 @@ QString HighScoreScene::returnPlayerNameOrScore(int index, bool getName)
 	ifstream scoreFile;
 	string line;
 
-	char userProfilePath[0xffff];
-	ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
-	strcat(userProfilePath, "\\HIGHSCORE.LST");
+    #ifdef WINDOWS
+        char userProfilePath[0xffff];
+        ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
+        strcat(userProfilePath, "\\HIGHSCORE.LST");
+    #endif
+    #ifdef LINUX
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+    #endif
+    #ifdef MACOS
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+    #endif
 	scoreFile.open(userProfilePath);
-
 	if (scoreFile.is_open())
 	{
 		for (int i = 0; i <= index; i++)
@@ -142,10 +151,20 @@ int HighScoreScene::getPosInFile(int score)
 	string line, buf;
 	int currentLine = 0;
 
-	char userProfilePath[0xffff];
-	ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
-	strcat(userProfilePath, "\\HIGHSCORE.LST");
-	scoreFile.open(userProfilePath);
+    #ifdef WINDOWS
+        char userProfilePath[0xffff];
+        ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
+        strcat(userProfilePath, "\\HIGHSCORE.LST");
+    #endif
+    #ifdef LINUX
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+    #endif
+    #ifdef MACOS
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+    #endif
+    scoreFile.open(userProfilePath);
 
 	if (scoreFile.is_open())
 	{
@@ -172,9 +191,19 @@ int HighScoreScene::getNumOfLines()
 	string line;
 	int lines = 0;
 
-	char userProfilePath[0xffff];
-	ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
-	strcat(userProfilePath, "\\HIGHSCORE.LST");
+	#ifdef WINDOWS
+        char userProfilePath[0xffff];
+        ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
+		strcat(userProfilePath, "\\HIGHSCORE.LST");
+	#endif
+	#ifdef LINUX
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+	#endif
+    #ifdef MACOS
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+    #endif
 	scoreFile.open(userProfilePath);
 
 	while (!scoreFile.eof())
@@ -209,9 +238,19 @@ void HighScoreScene::submitName()
 		vector <string> buf;
 		string bufLine;
 
-		char userProfilePath[0xffff];
-		ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
-		strcat(userProfilePath, "\\HIGHSCORE.LST");
+    #ifdef WINDOWS
+        char userProfilePath[0xffff];
+        ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
+        strcat(userProfilePath, "\\HIGHSCORE.LST");
+    #endif
+    #ifdef LINUX
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+    #endif
+    #ifdef MACOS
+        string userProfilePath = getenv("HOME");
+        userProfilePath.append("/HIGHSCORE.LST");
+    #endif
 
 		scoreFile.open(userProfilePath);
 		if (scoreFile.is_open())
@@ -245,8 +284,8 @@ void HighScoreScene::submitName()
 
 		for (int i = 0; i < 5; i++)
 		{
-			top5Players[i]->setPlainText(returnPlayerNameOrScore(i, true));
-			top5PlayersScore[i]->setPlainText(returnPlayerNameOrScore(i, false));
+			top5PlayersScore[0][i]->setPlainText(returnPlayerNameOrScore(i, true));
+			top5PlayersScore[1][i]->setPlainText(returnPlayerNameOrScore(i, false));
 		}
 
 		nameEntry->deleteLater();

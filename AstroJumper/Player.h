@@ -35,6 +35,7 @@ private:
 	QTimer* keyTimer = NULL;
 	QMediaPlayer* jumpSfx;
 	QMediaPlayer* deathSfx;
+	QMediaPlayer* walkSfx;
 
 private slots:
 	int playerPhysics();

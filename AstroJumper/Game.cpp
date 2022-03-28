@@ -13,16 +13,15 @@ Game::~Game()
 
 void Game::generateGamePlatforms(int startArr, int stopArr, int startY)
 {
-	int currentY = startY;
+	platform[startArr] = new Platform();
+	platform[startArr]->posX = rand() % 800 - 150 / 2;
+	platform[startArr]->posY = startY;
+	platform[startArr]->placePlatform();
+	scene->addItem(platform[startArr]);
 
-	for (int i = startArr; i < stopArr; i++)
+	if (startArr < stopArr-1)
 	{
-		platform[i] = new Platform();
-		platform[i]->posX = rand() % 800 - 150 / 2;
-		platform[i]->posY = currentY;
-		platform[i]->placePlatform();
-		scene->addItem(platform[i]);
-		currentY -= 100;
+		generateGamePlatforms(startArr + 1, stopArr, startY - 100);
 	}
 }
 
@@ -43,6 +42,10 @@ void Game::launchGame()
 	scene->setBackgroundBrush(QBrush(QImage(":/images/Images/GameBg.png")));
 	scene->setStickyFocus(true);
 	setScene(scene);
+
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setFixedSize(800, 600);
 
 	score = new Score();
 	score->setPos(0, 0);

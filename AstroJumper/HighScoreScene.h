@@ -1,15 +1,22 @@
 #ifndef HIGHSCORESCENE_H
 #define HIGHSCORESCENE_H
 
+#define WINDOWS
+//#define MACOS
+//#define LINUX
+
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QLineEdit>
 #include <QPushButton>
 #include <fstream>
+#ifdef WINDOWS //Checks if we are compiling for Windows
 #include <windows.h>
+#endif
 #include <string>
 #include <vector>
 #include <QMessageBox>
+
 
 class HighScoreScene : public QGraphicsScene
 {
@@ -18,8 +25,7 @@ class HighScoreScene : public QGraphicsScene
 public:
 	HighScoreScene(int score, QGraphicsScene *parent = 0);
 	~HighScoreScene();
-	QGraphicsTextItem* top5Players[5];
-	QGraphicsTextItem* top5PlayersScore[5];
+	QGraphicsTextItem* top5PlayersScore[2][5];
 	QLineEdit* nameEntry;
 	QGraphicsProxyWidget* nameEntryProxy;
 	QPushButton* submitNameButton;

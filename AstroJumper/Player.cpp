@@ -26,12 +26,17 @@ Player::Player(QGraphicsPixmapItem* parent)
 	connect(timer, SIGNAL(timeout()), this, SLOT(playerPhysics()));
 	timer->start(10);
 
+	// Jump sound
 	jumpSfx = new QMediaPlayer(this);
 	jumpSfx->setMedia(QUrl("qrc:/sounds/Sounds/jump.mp3"));
 
 	//Death sound
 	deathSfx = new QMediaPlayer(this);
 	deathSfx->setMedia(QUrl("qrc:/sounds/Sounds/deathtest.mp3"));
+
+	// Walking sound
+	walkSfx = new QMediaPlayer(this);
+	walkSfx->setMedia(QUrl("qrc:/sounds/Sounds/walking.mp3"));
 
 }
 
@@ -49,15 +54,24 @@ void Player::keyPressEvent(QKeyEvent* event)
 		jumpSfx->play();
 		break;
 	case Qt::Key_Left:
+		if (angle == -1)
+		{
+			walkSfx->play();
+		}
 		if (xPos >= 0)
 		{
 			xPos -= 15;
 			angle = prevAngle;
+			
 			setPos(xPos, yPos);
 		}
 		setPixmap(QPixmap(":/images/Images/playerLeft.png"));
 		break;
 	case Qt::Key_Right:
+		if (angle == -1)
+		{
+			walkSfx->play();
+		}
 		if (xPos <= 700)
 		{
 			xPos += 15;

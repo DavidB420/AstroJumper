@@ -185,6 +185,7 @@
     <Media Include="Sounds\deathtest.mp3" />
     <Media Include="Sounds\gunShot.mp3" />
     <Media Include="Sounds\jump.mp3" />
+    <Media Include="Sounds\walking.mp3" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Score.h" />
