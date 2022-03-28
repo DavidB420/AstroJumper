@@ -65,7 +65,7 @@ void Player::keyPressEvent(QKeyEvent* event)
 			
 			setPos(xPos, yPos);
 		}
-		setPixmap(QPixmap(":/images/Images/playerLeft.png"));
+		setPixmap(QPixmap(":/images/Images/playerMovingLeft.png"));
 		break;
 	case Qt::Key_Right:
 		if (angle == -1)
@@ -78,6 +78,19 @@ void Player::keyPressEvent(QKeyEvent* event)
 			angle = prevAngle;
 			setPos(xPos, yPos);
 		}
+		setPixmap(QPixmap(":/images/Images/playerMovingRight.png"));
+		break;
+	}
+}
+
+void Player::keyReleaseEvent(QKeyEvent* event)
+{
+	switch (event->key())
+	{
+	case Qt::Key_Left:
+		setPixmap(QPixmap(":/images/Images/playerLeft.png"));
+		break;
+	case Qt::Key_Right:
 		setPixmap(QPixmap(":/images/Images/playerRight.png"));
 		break;
 	}

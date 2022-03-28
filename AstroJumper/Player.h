@@ -25,6 +25,7 @@ public:
 	Player(QGraphicsPixmapItem *parent = 0);
 	~Player();
 	void keyPressEvent(QKeyEvent* event);
+	void keyReleaseEvent(QKeyEvent* event);
 	int dx = 0, dy = 0, xPos, yPos;
 	float angle, prevAngle;
 private:

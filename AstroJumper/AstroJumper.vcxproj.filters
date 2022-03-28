@@ -22,6 +22,9 @@
     <ClCompile Include="HighScoreScene.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Player.h">
@@ -40,6 +43,9 @@
       <Filter>Header files</Filter>
     </QtMoc>
     <QtMoc Include="HighScoreScene.h">
+      <Filter>Header files</Filter>
+    </QtMoc>
+    <QtMoc Include="MainMenuScene.h">
       <Filter>Header files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -92,6 +98,12 @@
       <Filter>Resource files\Images</Filter>
     </Image>
     <Image Include="Images\meteorCracked.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\playerMovingLeft.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\playerMovingRight.png">
       <Filter>Resource files\Images</Filter>
     </Image>
   </ItemGroup>

@@ -9,6 +9,8 @@
         <file>Images/GameBg.png</file>
         <file>Images/meteorBroken.png</file>
         <file>Images/meteorCracked.png</file>
+        <file>Images/playerMovingLeft.png</file>
+        <file>Images/playerMovingRight.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>Sounds/jump.mp3</file>
