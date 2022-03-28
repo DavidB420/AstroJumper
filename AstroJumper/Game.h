@@ -14,6 +14,7 @@
 #include <time.h>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
+#include "MainMenuScene.h"
 
 class Game : public QGraphicsView
 {
@@ -22,6 +23,7 @@ class Game : public QGraphicsView
 public:
 	Game(QWidget *parent = 0);
 	~Game();
+	int currentDifficulty;
 	QGraphicsScene* scene;
 	Player* player;
 	Platform* platform[5] = { NULL,NULL,NULL,NULL,NULL };
@@ -29,9 +31,10 @@ public:
 	Score* score;
 	HighScoreScene* hScoreScene;
 	QTimer* projectileSpawnTimer;
+	MainMenuScene* mainMenuScene;
 	void generateGamePlatforms(int startArr, int stopArr, int startY);
 	void loadHighScore();
-	void launchGame();
+	void launchGame(int gameDifficulty);
 private:
 	QMediaPlayer* bgplayer;
 	QMediaPlaylist* bgPlaylist;

@@ -3,15 +3,17 @@
 
 extern Game* game;
 
-Player::Player(QGraphicsPixmapItem* parent)
+Player::Player(int difficulty, QGraphicsPixmapItem* parent)
 {
 	xPos = 350;
 	yPos = 500;
 	angle = -1;
+	currentDifficulty = difficulty;
 	prevAngle = angle;
 	firstJump = false;
 	playerPlatform = NULL;
 	deathSfxPlayed = false;
+
 
 	setZValue(69);
 
@@ -138,7 +140,10 @@ int Player::playerPhysics()
 
 								game->score->increaseScore();
 
-								game->platform[0]->startBreakProcedure();
+								if (currentDifficulty >= 2)
+								{
+									game->platform[0]->startBreakProcedure();
+								}
 							}
 
 						}
@@ -147,7 +152,11 @@ int Player::playerPhysics()
 						{
 							playerPlatform = collidingitems[i];
 							game->score->increaseScore();
-							game->platform[0]->startBreakProcedure();
+							
+							if (currentDifficulty >= 2)
+							{
+								game->platform[0]->startBreakProcedure();
+							}
 						}
 						
 						if (playerPlatform == collidingitems[i] && game->platform[0]->isBroken())

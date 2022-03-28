@@ -9,10 +9,10 @@ class Score : public QGraphicsTextItem
 	Q_OBJECT
 
 public:
-	Score(QGraphicsTextItem *parent = 0);
+	Score(int difficulty, QGraphicsTextItem *parent = 0);
 	~Score();
 	void increaseScore();
-	int score;
+	int score, currentDifficulty;
 };
 
 #endif

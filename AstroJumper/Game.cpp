@@ -3,8 +3,11 @@
 Game::Game(QWidget* parent)
 {
 	srand(time(0));
+
+	currentDifficulty = 0;
 	
-	launchGame();
+	mainMenuScene = new MainMenuScene();
+	setScene(mainMenuScene);
 }
 
 Game::~Game()
@@ -29,14 +32,19 @@ void Game::loadHighScore()
 {
 	delete bgPlaylist;
 	delete bgplayer;
-	projectileSpawnTimer->stop();
+	if (currentDifficulty >= 1)
+	{
+		projectileSpawnTimer->stop();
+	}
 	hScoreScene = new HighScoreScene(score->score);
 	setScene(hScoreScene);
 	delete scene;
 }
 
-void Game::launchGame()
+void Game::launchGame(int gameDifficulty)
 {
+	currentDifficulty = gameDifficulty;
+	
 	scene = new QGraphicsScene();
 	scene->setSceneRect(0, 0, 800, 600);
 	scene->setBackgroundBrush(QBrush(QImage(":/images/Images/GameBg.png")));
@@ -47,18 +55,21 @@ void Game::launchGame()
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFixedSize(800, 600);
 
-	score = new Score();
+	score = new Score(currentDifficulty);
 	score->setPos(0, 0);
 	scene->addItem(score);
 
 	generateGamePlatforms(0, 5, 460);
 
-	player = new Player();
+	player = new Player(currentDifficulty);
 	scene->addItem(player);
 
-	projectileSpawnTimer = new QTimer(this);
-	connect(projectileSpawnTimer, SIGNAL(timeout()), this, SLOT(projectileSpawn()));
-	projectileSpawnTimer->start(2000);
+	if (currentDifficulty >= 1)
+	{
+		projectileSpawnTimer = new QTimer(this);
+		connect(projectileSpawnTimer, SIGNAL(timeout()), this, SLOT(projectileSpawn()));
+		projectileSpawnTimer->start(2000);
+	}
 
 	bgplayer = new QMediaPlayer(this);
 	bgPlaylist = new QMediaPlaylist(this);

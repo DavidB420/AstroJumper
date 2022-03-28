@@ -169,11 +169,17 @@
     <QtMoc Include="Platform.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Images\creditsIcon.png" />
+    <Image Include="Images\difficultDifficultyIcon.png" />
+    <Image Include="Images\easyDifficultyIcon.png" />
     <Image Include="Images\GameBg.png" />
     <Image Include="Images\highScoreBg.png" />
+    <Image Include="Images\instructionIcon.png" />
+    <Image Include="Images\mainMenuBg.png" />
     <Image Include="Images\meteor.png" />
     <Image Include="Images\meteorBroken.png" />
     <Image Include="Images\meteorCracked.png" />
+    <Image Include="Images\nightmareDifficultyIcon.png" />
     <Image Include="Images\playerLeft.png" />
     <Image Include="Images\playerMovingLeft.png" />
     <Image Include="Images\playerMovingRight.png" />

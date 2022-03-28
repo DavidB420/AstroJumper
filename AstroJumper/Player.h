@@ -22,18 +22,17 @@ class Player : public QObject, public QGraphicsPixmapItem
 	Q_OBJECT
 
 public:
-	Player(QGraphicsPixmapItem *parent = 0);
+	Player(int difficulty, QGraphicsPixmapItem *parent = 0);
 	~Player();
 	void keyPressEvent(QKeyEvent* event);
 	void keyReleaseEvent(QKeyEvent* event);
-	int dx = 0, dy = 0, xPos, yPos;
+	int dx = 0, dy = 0, xPos, yPos, currentDifficulty;
 	float angle, prevAngle;
 private:
 	float time = 0;
 	bool firstJump, deathSfxPlayed;
 	QGraphicsItem* playerPlatform;
 	QTimer* timer = NULL;
-	QTimer* keyTimer = NULL;
 	QMediaPlayer* jumpSfx;
 	QMediaPlayer* deathSfx;
 	QMediaPlayer* walkSfx;

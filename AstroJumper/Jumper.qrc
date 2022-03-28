@@ -11,6 +11,12 @@
         <file>Images/meteorCracked.png</file>
         <file>Images/playerMovingLeft.png</file>
         <file>Images/playerMovingRight.png</file>
+        <file>Images/mainMenuBg.png</file>
+        <file>Images/easyDifficultyIcon.png</file>
+        <file>Images/difficultDifficultyIcon.png</file>
+        <file>Images/nightmareDifficultyIcon.png</file>
+        <file>Images/instructionIcon.png</file>
+        <file>Images/creditsIcon.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>Sounds/jump.mp3</file>

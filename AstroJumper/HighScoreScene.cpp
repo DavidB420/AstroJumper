@@ -226,7 +226,7 @@ void HighScoreScene::createPlayAgainButton()
 
 void HighScoreScene::relaunchGame()
 {
-	game->launchGame();
+	game->launchGame(game->currentDifficulty);
 }
 
 void HighScoreScene::submitName()
@@ -238,19 +238,19 @@ void HighScoreScene::submitName()
 		vector <string> buf;
 		string bufLine;
 
-    #ifdef WINDOWS
-        char userProfilePath[0xffff];
-        ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
-        strcat(userProfilePath, "\\HIGHSCORE.LST");
-    #endif
-    #ifdef LINUX
-        string userProfilePath = getenv("HOME");
-        userProfilePath.append("/HIGHSCORE.LST");
-    #endif
-    #ifdef MACOS
-        string userProfilePath = getenv("HOME");
-        userProfilePath.append("/HIGHSCORE.LST");
-    #endif
+		#ifdef WINDOWS
+		    char userProfilePath[0xffff];
+		    ExpandEnvironmentStringsA("%userprofile%", userProfilePath, 0xffff);
+		    strcat(userProfilePath, "\\HIGHSCORE.LST");
+		#endif
+		#ifdef LINUX
+		    string userProfilePath = getenv("HOME");
+		    userProfilePath.append("/HIGHSCORE.LST");
+		#endif
+		#ifdef MACOS
+		    string userProfilePath = getenv("HOME");
+		    userProfilePath.append("/HIGHSCORE.LST");
+		#endif
 
 		scoreFile.open(userProfilePath);
 		if (scoreFile.is_open())

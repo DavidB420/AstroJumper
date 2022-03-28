@@ -106,6 +106,24 @@
     <Image Include="Images\playerMovingRight.png">
       <Filter>Resource files\Images</Filter>
     </Image>
+    <Image Include="Images\mainMenuBg.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\easyDifficultyIcon.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\difficultDifficultyIcon.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\nightmareDifficultyIcon.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\instructionIcon.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\creditsIcon.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\jump.mp3">
