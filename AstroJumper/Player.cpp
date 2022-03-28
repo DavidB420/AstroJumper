@@ -211,33 +211,39 @@ int Player::playerPhysics()
 
 						}
 
+						//If this is the first jump, continue
 						if (!firstJump)
 						{
+							//Save a copy of the platform the player has jumped on
 							playerPlatform = collidingitems[i];
+
+							//Increment score
 							game->score->increaseScore();
 							
+							//If the difficulty is equal to Difficult or above, begin the break procedure
 							if (currentDifficulty >= 2)
 							{
 								game->platform[0]->startBreakProcedure();
 							}
 						}
 						
+						//If the player lands on the same platform they were on before and platform is broken, continue
 						if (playerPlatform == collidingitems[i] && game->platform[0]->isBroken())
 						{
-							angle = 0;
-							prevAngle = angle;
+							angle = 0; //Set angle to zero so it falls
+							prevAngle = angle; //Set previous angle to angle
 						}
-						else
+						else //Otherwise have the player stay on the platform
 						{
-							angle = -1;
-							prevAngle = 0;
-							yPos = collidingitems[i]->y() - 100;
-							time = 0;
-							dy = 0;
+							angle = -1; //Set angle to null
+							prevAngle = 0; //Set previous angle to 0
+							yPos = collidingitems[i]->y() - 100; //Have the player be directly on top of the platform
+							time = 0; //Reset time counter
+							dy = 0; //Reset delta y
 						}
 
 						
-
+						//Update first jump
 						firstJump = true;
 
 
@@ -246,12 +252,17 @@ int Player::playerPhysics()
 			}
 		}
 
+		//Update time counter
 		time += 0.01;
+
+		//Update player position
 		setPos(xPos, yPos);
 	}
 
+	//If the player has fallen off a platform, continue
 	if (yPos > 500 && firstJump == true)
 	{
+		//If the death sfx isn't playing, continue
 		if (deathSfx->state() == QMediaPlayer::StoppedState)
 		{
 			if (!deathSfxPlayed)
@@ -271,20 +282,23 @@ int Player::playerPhysics()
 		}
 		return NULL;
 	}
+
+	//If the player has landed on the ground but hasn't fallen from a platform, continue
 	if (yPos > 500)
 	{
-		angle = -1;
-		prevAngle = angle;
-		yPos = 500;
-		time = 0;
-		dy = 0;
+		angle = -1; //Set the angle to null
+		prevAngle = angle; //Set the previous angle to null
+		yPos = 500; //Set the player's y position to the bottom of the screen
+		time = 0; //Reset time counter
+		dy = 0; //Reset delta y
 	}
 
+	//If the platform has broken and the player is still on it, have them fall
 	if (game->platform[0]->isBroken() && angle == -1 && dy == 0)
 	{
-		angle = 0;
-		prevAngle = angle;
+		angle = 0; //Set angle to zero so they fall
+		prevAngle = angle; //Set previous angle to angle
 	}
 
-	return NULL;
+	return NULL; //End the function by returning NULL
 }
