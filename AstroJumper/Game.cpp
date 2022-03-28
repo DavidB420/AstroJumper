@@ -4,6 +4,11 @@ Game::Game(QWidget* parent)
 {
 	srand(time(0));
 
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+	setFixedSize(800, 600);
+	
 	currentDifficulty = 0;
 	
 	mainMenuScene = new MainMenuScene();
@@ -50,10 +55,6 @@ void Game::launchGame(int gameDifficulty)
 	scene->setBackgroundBrush(QBrush(QImage(":/images/Images/GameBg.png")));
 	scene->setStickyFocus(true);
 	setScene(scene);
-
-	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	setFixedSize(800, 600);
 
 	score = new Score(currentDifficulty);
 	score->setPos(0, 0);
