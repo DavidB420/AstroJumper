@@ -1,3 +1,11 @@
+/*--------------------------------------------------------------------------------
+* David Badiei, Nathan Vuong
+* 06/13/2022
+* ICS4U1
+* Player.h
+* Header (definition file) for Player object
+*-------------------------------------------------------------------------------*/
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -24,7 +32,6 @@ class Player : public QObject, public QGraphicsPixmapItem
 
 public:
 	Player(int difficulty, QGraphicsPixmapItem *parent = 0);
-	~Player();
 	void keyPressEvent(QKeyEvent* event);
 	void keyReleaseEvent(QKeyEvent* event);
 	int dx = 0, dy = 0, xPos, yPos, currentDifficulty;

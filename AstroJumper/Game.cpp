@@ -11,6 +11,7 @@
 
 /**
 * Creates Game object and initializes all its values to its default settings
+* @param parent Inherits QWidget class
 */
 Game::Game(QWidget* parent)
 {
@@ -112,19 +113,14 @@ void Game::launchGame(int gameDifficulty)
 		connect(projectileSpawnTimer, SIGNAL(timeout()), this, SLOT(projectileSpawn()));
 		projectileSpawnTimer->start(2000);
 	}
-
-	// Creates the music player object
-	bgplayer = new QMediaPlayer(this);
-	// Creates the music playlist object
-	bgPlaylist = new QMediaPlaylist(this);
-	// add in the game music from the resource file
-	bgPlaylist->addMedia(QUrl("qrc:/sounds/Sounds/BGMusic.mp3"));
-	// plays the music in a loop
-	bgPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
-	// set playlist
-	bgplayer->setPlaylist(bgPlaylist);
-	// plays the game music
-	bgplayer->play();
+	
+	//Initialize the background music
+	bgplayer = new QMediaPlayer(this); //Creates the music player object
+	bgPlaylist = new QMediaPlaylist(this); 	//Creates the music playlist object
+	bgPlaylist->addMedia(QUrl("qrc:/sounds/Sounds/BGMusic.mp3")); //Add in the game music from the resource file
+	bgPlaylist->setPlaybackMode(QMediaPlaylist::Loop); //Plays the music in a loop
+	bgplayer->setPlaylist(bgPlaylist); //Set playlist
+	bgplayer->play(); //Plays the game music
 }
 
 /**
