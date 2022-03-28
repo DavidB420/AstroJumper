@@ -134,6 +134,7 @@ void Player::keyReleaseEvent(QKeyEvent* event)
 
 /**
 * Handles all physics (gravity) and platform hit detection
+* @return NULL
 */
 int Player::playerPhysics()
 {
@@ -265,10 +266,13 @@ int Player::playerPhysics()
 		//If the death sfx isn't playing, continue
 		if (deathSfx->state() == QMediaPlayer::StoppedState)
 		{
+			// Checking if the death sound effects been played
+			// If not played, it would played the death sound
 			if (!deathSfxPlayed)
 			{
 				deathSfx->play();
 			}
+			// if the death sound been played, it would bring up the high score screen and delete the player object
 			else
 			{
 				scene()->removeItem(this);
@@ -276,10 +280,12 @@ int Player::playerPhysics()
 				game->loadHighScore();
 			}
 		}
+		// Check if the death sound is playing, if so set the the deathSfxPlayed to True
 		else if (deathSfx->state() == QMediaPlayer::PlayingState)
 		{
 			deathSfxPlayed = true;
 		}
+		//End the function by returning Null
 		return NULL;
 	}
 

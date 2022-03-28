@@ -1,3 +1,11 @@
+/*--------------------------------------------------------------------------------
+* David Badiei, Nathan Vuong
+* 06/13/2022
+* ICS4U1
+* HighScoreScene.h
+* Header (definition file) for HighScoreScene object
+*-------------------------------------------------------------------------------*/
+
 #ifndef HIGHSCORESCENE_H
 #define HIGHSCORESCENE_H
 
@@ -14,6 +22,7 @@
 #include <vector>
 #include <QMessageBox>
 
+using namespace std; //Access the std namespace (we can access fstream)
 
 class HighScoreScene : public QGraphicsScene
 {
@@ -21,7 +30,6 @@ class HighScoreScene : public QGraphicsScene
 
 public:
 	HighScoreScene(int score, QGraphicsScene *parent = 0);
-	~HighScoreScene();
 	QGraphicsTextItem* top5PlayersScore[2][5];
 	QLineEdit* nameEntry;
 	QGraphicsProxyWidget* nameEntryProxy;
@@ -32,6 +40,8 @@ public:
 	int getNumOfLines();
 	int currentScore;
 	void createPlayAgainButton();
+private:
+	void loadHighScoreFile(ifstream& scoreFile);
 private slots:
 	void submitName();
 	void relaunchGame();
