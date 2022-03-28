@@ -9,7 +9,7 @@
 #include "MainMenuScene.h"
 #include "Game.h"
 
-extern Game* game;
+extern Game* game; //Access game object from main menu scene object
 
 /**
 * Initializes main menu scene with its buttons and custom background. 
