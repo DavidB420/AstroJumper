@@ -85,10 +85,11 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 */
 void MainMenuScene::playNightmare()
 {
-	// stops playing the background music
+	//Stops playing the background music
 	delete bgPlaylist;
 	delete bgplayer;
-	// goes to the game in Nightmare mode
+	
+	//Goes to the game in Nightmare mode
 	game->launchGame(2); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
@@ -97,10 +98,11 @@ void MainMenuScene::playNightmare()
 */
 void MainMenuScene::playDifficult()
 {	
-	// stops playing the background music
+	//Stops playing the background music
 	delete bgPlaylist;
 	delete bgplayer;
-	// goes to the game in Difficult mode
+	
+	//Goes to the game in Difficult mode
 	game->launchGame(1); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
@@ -109,10 +111,11 @@ void MainMenuScene::playDifficult()
 */
 void MainMenuScene::playEasy()
 {	
-	// Stops the background music
+	//Stops the background music
 	delete bgPlaylist;
 	delete bgplayer;
-	// goes to the game in Easy mode
+	
+	//Goes to the game in Easy mode
 	game->launchGame(0); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
