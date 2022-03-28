@@ -1,13 +1,27 @@
+/*--------------------------------------------------------------------------------
+* Chidubem Dimanochie, Nathan Vuong
+* 06/13/2022
+* ICS4U1
+* MainMenuScene.cpp
+* Creates a main menu scene with its buttons and custom background.
+*--------------------------------------------------------------------------------*/
+
 #include "MainMenuScene.h"
 #include "Game.h"
 
 extern Game* game;
 
-MainMenuScene::MainMenuScene(QGraphicsScene *parent)
+/**
+* Initializes main menu scene with its buttons and custom background. 
+* @param parent Inherits the QGraphicsScene class
+*/
+MainMenuScene::MainMenuScene(QGraphicsScene *parent) 
 {
+	// Creates Background image
 	setSceneRect(0, 0, 800, 600);
 	setBackgroundBrush(QBrush(QImage(":/images/Images/mainMenuBg.png")));
 
+	// Create button when clicked sends user to Nightmare difficulty level
 	QPushButton* nightmareButton = new QPushButton();
 	QIcon nightmareIcon(":/images/Images/nightmareDifficultyIcon.png");
 	nightmareButton->setIcon(nightmareIcon);
@@ -17,6 +31,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* nightmareButtonProxy = addWidget(nightmareButton);
 	connect(nightmareButton, SIGNAL(clicked()), this, SLOT(playNightmare()));
 
+	// Create button when clicked sends user to Difficult difficulty level
 	QPushButton* difficultButton = new QPushButton();
 	QIcon difficultIcon(":/images/Images/difficultDifficultyIcon.png");
 	difficultButton->setIcon(difficultIcon);
@@ -26,6 +41,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* difficultButtonProxy = addWidget(difficultButton);
 	connect(difficultButton, SIGNAL(clicked()), this, SLOT(playDifficult()));
 
+	// Create button when clicked sends user to easy difficulty level
 	QPushButton* easyButton = new QPushButton();
 	QIcon easyIcon(":/images/Images/easyDifficultyIcon.png");
 	easyButton->setIcon(easyIcon);
@@ -35,6 +51,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* easyButtonProxy = addWidget(easyButton);
 	connect(easyButton, SIGNAL(clicked()), this, SLOT(playEasy()));
 
+	// Create button when clicked displays instructions on how to play the game
 	QPushButton* instructionsButton = new QPushButton();
 	QIcon instructionsIcon(":/images/Images/instructionIcon.png");
 	instructionsButton->setIcon(instructionsIcon);
@@ -44,6 +61,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* instructionsButtonProxy = addWidget(instructionsButton);
 	connect(instructionsButton, SIGNAL(clicked()), this, SLOT(showInstructions()));
 
+	// Create button when clicked displays the credits for the game
 	QPushButton* creditsButton = new QPushButton();
 	QIcon creditsIcon(":/images/Images/creditsIcon.png");
 	creditsButton->setIcon(creditsIcon);
@@ -53,6 +71,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* creditsButtonProxy = addWidget(creditsButton);
 	connect(creditsButton, SIGNAL(clicked()), this, SLOT(showCredits()));
 
+	// Plays background music while user is in MainMenuScene
 	bgplayer = new QMediaPlayer(this);
 	bgPlaylist = new QMediaPlaylist(this);
 	bgPlaylist->addMedia(QUrl("qrc:sounds/Sounds/MainMenuMusic.mp3"));
@@ -61,10 +80,9 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	bgplayer->play();
 }
 
-MainMenuScene::~MainMenuScene()
-{
-}
-
+/**
+* Sends user to Launch game with Nightmare Difficulty
+*/
 void MainMenuScene::playNightmare()
 {
 	delete bgPlaylist;
@@ -72,6 +90,9 @@ void MainMenuScene::playNightmare()
 	game->launchGame(2); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
+/**
+* Sends user to Launch game with Difficult Difficulty
+*/
 void MainMenuScene::playDifficult()
 {	
 	delete bgPlaylist;
@@ -79,6 +100,9 @@ void MainMenuScene::playDifficult()
 	game->launchGame(1); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
+/**
+* Sends user to Launch game with easy Difficulty
+*/
 void MainMenuScene::playEasy()
 {	
 	delete bgPlaylist;
@@ -86,8 +110,12 @@ void MainMenuScene::playEasy()
 	game->launchGame(0); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
+/**
+* Displays instructions for how to play the game
+*/
 void MainMenuScene::showInstructions()
 {
+	// Create message box that displays instructions
 	QMessageBox* mBox = new QMessageBox();
 	mBox->setText("Up Arrow - Jump\nLeft Arrow - Move Left\nRight Arrow - Move Right");
 	mBox->setIcon(QMessageBox::Information);
@@ -95,8 +123,12 @@ void MainMenuScene::showInstructions()
 	mBox->show();
 }
 
+/**
+* Displays credts for the game.
+*/
 void MainMenuScene::showCredits()
 {
+	// Create Message box that displays credits
 	QMessageBox* mBox = new QMessageBox();
 	mBox->setText("David Badiei - Team Leader/Programmer\nNathan Vuong - Sound/Documentation\nChidubem Dimanochie - Music/Main Menu\nAndrew Miceli - Graphics Design");
 	mBox->setIcon(QMessageBox::Information);

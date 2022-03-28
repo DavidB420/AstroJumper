@@ -1,3 +1,11 @@
+/*--------------------------------------------------------------------------------
+* Chidubem Dimanochie, Nathan Vuong
+* 06/13/2022
+* ICS4U1
+* MainMenuScene.h
+* Header (definition file) for MainMenuScene object
+*-------------------------------------------------------------------------------*/
+
 #ifndef MAINMENUSCENE_H
 #define MAINMENUSCENE_H
 
@@ -15,7 +23,6 @@ class MainMenuScene : public QGraphicsScene
 
 public:
 	MainMenuScene(QGraphicsScene* parent = 0);
-	~MainMenuScene();
 private:
 	QMediaPlayer* bgplayer;
 	QMediaPlaylist* bgPlaylist;
