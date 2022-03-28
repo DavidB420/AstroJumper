@@ -3,22 +3,24 @@
 
 #include <QObject>
 #include <QWidget>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QTimer>
 #include <QEvent>
 
-class Platform : public QObject, public QGraphicsRectItem
+class Platform : public QObject, public QGraphicsPixmapItem
 {
 	Q_OBJECT
 
 public:
-	Platform(QGraphicsRectItem* parent = 0);
+	Platform(QGraphicsPixmapItem* parent = 0);
 	~Platform();
 	void placePlatform();
 	int posX = 0, posY = 0;
+	bool isBroken();
+	void startBreakProcedure();
 private:
-	QTimer* platformMoveTimer;
+	bool broken;
 private slots:
-	void moveDown();
+	void breakPlatform();
 };
 #endif

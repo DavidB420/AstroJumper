@@ -13,6 +13,15 @@
     <ClCompile Include="Platform.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="HighScoreScene.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Player.h">
@@ -22,6 +31,15 @@
       <Filter>Header files</Filter>
     </QtMoc>
     <QtMoc Include="Platform.h">
+      <Filter>Header files</Filter>
+    </QtMoc>
+    <QtMoc Include="Projectile.h">
+      <Filter>Header files</Filter>
+    </QtMoc>
+    <QtMoc Include="Score.h">
+      <Filter>Header files</Filter>
+    </QtMoc>
+    <QtMoc Include="HighScoreScene.h">
       <Filter>Header files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -39,10 +57,56 @@
     <Filter Include="Resource files">
       <UniqueIdentifier>{9f1dc940-86e2-4c32-b38a-c218f06774a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource files\Images">
+      <UniqueIdentifier>{1482f4dc-07c3-4534-a38b-ae1fed5cf1f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource files\Sounds">
+      <UniqueIdentifier>{969c5211-6eb4-498e-86f6-2dc3d52b2d30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Jumper.qrc">
       <Filter>Resource files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\meteor.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\playerLeft.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\projectile.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\playerRight.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\highScoreBg.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\GameBg.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\meteorBroken.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+    <Image Include="Images\meteorCracked.png">
+      <Filter>Resource files\Images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\jump.mp3">
+      <Filter>Resource files\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\deathtest.mp3">
+      <Filter>Resource files\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\gunShot.mp3">
+      <Filter>Resource files\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\BGMusic.mp3">
+      <Filter>Resource files\Sounds</Filter>
+    </Media>
   </ItemGroup>
 </Project>

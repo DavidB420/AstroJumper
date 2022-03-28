@@ -32,7 +32,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -48,12 +48,12 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
     <QtInstall>Qt 5.9</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;multimedia</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="QtSettings">
     <QtInstall>Qt 5.9</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;multimedia</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="QtSettings">
@@ -93,6 +93,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile />
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -146,8 +149,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HighScoreScene.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Score.cpp" />
     <QtRcc Include="Jumper.qrc" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
@@ -160,6 +166,31 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Platform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\GameBg.png" />
+    <Image Include="Images\highScoreBg.png" />
+    <Image Include="Images\meteor.png" />
+    <Image Include="Images\meteorBroken.png" />
+    <Image Include="Images\meteorCracked.png" />
+    <Image Include="Images\playerLeft.png" />
+    <Image Include="Images\playerRight.png" />
+    <Image Include="Images\projectile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Projectile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\BGMusic.mp3" />
+    <Media Include="Sounds\deathtest.mp3" />
+    <Media Include="Sounds\gunShot.mp3" />
+    <Media Include="Sounds\jump.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Score.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="HighScoreScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,4 +1,19 @@
 <RCC>
-    <qresource prefix="Jumper">
+    <qresource prefix="/Jumper"/>
+    <qresource prefix="/images">
+        <file>Images/meteor.png</file>
+        <file>Images/projectile.png</file>
+        <file>Images/playerLeft.png</file>
+        <file>Images/playerRight.png</file>
+        <file>Images/highScoreBg.png</file>
+        <file>Images/GameBg.png</file>
+        <file>Images/meteorBroken.png</file>
+        <file>Images/meteorCracked.png</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>Sounds/jump.mp3</file>
+        <file>Sounds/deathtest.mp3</file>
+        <file>Sounds/gunShot.mp3</file>
+        <file>Sounds/BGMusic.mp3</file>
     </qresource>
 </RCC>

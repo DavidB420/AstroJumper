@@ -3,32 +3,41 @@
 
 #include <QObject>
 #include <QWidget>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QTimer>
 #include <QEvent>
+#include <QDebug>
 #include <math.h>
+#include "Platform.h"
+#include <QMediaPlayer>
+//#include "Game.h"
 
-#define VELOCITY 5.00f
-#define PI 3.14159265
+#define VELOCITY 7.00f
+#define PI 2*acos(0.0)
 
-class Player : public QObject, public QGraphicsRectItem
+class Player : public QObject, public QGraphicsPixmapItem
 {
 	Q_OBJECT
 
 public:
-	Player(QGraphicsRectItem *parent = 0);
+	Player(QGraphicsPixmapItem *parent = 0);
 	~Player();
 	void keyPressEvent(QKeyEvent* event);
-	void createTimer(int theta,int speed);
-	int dx, dy;
-	float angle;
+	int dx = 0, dy = 0, xPos, yPos;
+	float angle, prevAngle;
 private:
 	float time = 0;
+	bool firstJump, deathSfxPlayed;
+	QGraphicsItem* playerPlatform;
 	QTimer* timer = NULL;
 	QTimer* keyTimer = NULL;
+	QMediaPlayer* jumpSfx;
+	QMediaPlayer* deathSfx;
+
 private slots:
-	void jump();
+	int playerPhysics();
 };
 
 #endif

@@ -1,11 +1,10 @@
 #include "Platform.h"
 
-Platform::Platform(QGraphicsRectItem* parent)
+Platform::Platform(QGraphicsPixmapItem* parent)
 {
-	//setRect(QRectF(posX, posY, 150, 50));
-	platformMoveTimer = new QTimer();
-	//connect(platformMoveTimer, SIGNAL(timeout()), this, SLOT(moveDown()));
-	//platformMoveTimer->start(100);
+	setPixmap(QPixmap(":/images/Images/meteor.png"));
+	
+	broken = false;
 }
 
 Platform::~Platform()
@@ -14,11 +13,22 @@ Platform::~Platform()
 
 void Platform::placePlatform()
 {
-	setRect(QRectF(posX, posY, 150, 50));
+	setPos(posX, posY);
 }
 
-void Platform::moveDown()
+void Platform::startBreakProcedure()
 {
-	posY += 5;
-	setRect(QRectF(posX, posY, 150, 50));
+	setPixmap(QPixmap(":/images/Images/meteorCracked.png"));
+	QTimer::singleShot(5000, this, SLOT(breakPlatform()));
+}
+
+bool Platform::isBroken()
+{
+	return broken;
+}
+
+void Platform::breakPlatform()
+{
+	broken = true;
+	setPixmap(QPixmap(":/images/Images/meteorBroken.png"));
 }
