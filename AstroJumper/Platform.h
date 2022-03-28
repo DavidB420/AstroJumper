@@ -1,3 +1,11 @@
+/*--------------------------------------------------------------------------------
+* David Badiei, Nathan Vuong
+* 06/13/2022
+* ICS4U1
+* Platform.h
+* Header (definition file) for Platform object
+*-------------------------------------------------------------------------------*/
+
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
@@ -13,7 +21,6 @@ class Platform : public QObject, public QGraphicsPixmapItem
 
 public:
 	Platform(QGraphicsPixmapItem* parent = 0);
-	~Platform();
 	void placePlatform();
 	int posX = 0, posY = 0;
 	bool isBroken();
