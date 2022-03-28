@@ -17,11 +17,11 @@ extern Game* game;
 */
 MainMenuScene::MainMenuScene(QGraphicsScene *parent) 
 {
-	// Creates Background image
+	//Creates Background image
 	setSceneRect(0, 0, 800, 600);
 	setBackgroundBrush(QBrush(QImage(":/images/Images/mainMenuBg.png")));
 
-	// Create button when clicked sends user to Nightmare difficulty level
+	//Create button when clicked sends user to Nightmare difficulty level
 	QPushButton* nightmareButton = new QPushButton();
 	QIcon nightmareIcon(":/images/Images/nightmareDifficultyIcon.png");
 	nightmareButton->setIcon(nightmareIcon);
@@ -31,7 +31,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* nightmareButtonProxy = addWidget(nightmareButton);
 	connect(nightmareButton, SIGNAL(clicked()), this, SLOT(playNightmare()));
 
-	// Create button when clicked sends user to Difficult difficulty level
+	//Create button when clicked sends user to Difficult difficulty level
 	QPushButton* difficultButton = new QPushButton();
 	QIcon difficultIcon(":/images/Images/difficultDifficultyIcon.png");
 	difficultButton->setIcon(difficultIcon);
@@ -41,7 +41,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* difficultButtonProxy = addWidget(difficultButton);
 	connect(difficultButton, SIGNAL(clicked()), this, SLOT(playDifficult()));
 
-	// Create button when clicked sends user to easy difficulty level
+	//Create button when clicked sends user to easy difficulty level
 	QPushButton* easyButton = new QPushButton();
 	QIcon easyIcon(":/images/Images/easyDifficultyIcon.png");
 	easyButton->setIcon(easyIcon);
@@ -51,7 +51,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* easyButtonProxy = addWidget(easyButton);
 	connect(easyButton, SIGNAL(clicked()), this, SLOT(playEasy()));
 
-	// Create button when clicked displays instructions on how to play the game
+	//Create button when clicked displays instructions on how to play the game
 	QPushButton* instructionsButton = new QPushButton();
 	QIcon instructionsIcon(":/images/Images/instructionIcon.png");
 	instructionsButton->setIcon(instructionsIcon);
@@ -61,7 +61,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* instructionsButtonProxy = addWidget(instructionsButton);
 	connect(instructionsButton, SIGNAL(clicked()), this, SLOT(showInstructions()));
 
-	// Create button when clicked displays the credits for the game
+	//Create button when clicked displays the credits for the game
 	QPushButton* creditsButton = new QPushButton();
 	QIcon creditsIcon(":/images/Images/creditsIcon.png");
 	creditsButton->setIcon(creditsIcon);
@@ -71,7 +71,7 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	QGraphicsProxyWidget* creditsButtonProxy = addWidget(creditsButton);
 	connect(creditsButton, SIGNAL(clicked()), this, SLOT(showCredits()));
 
-	// Plays background music while user is in MainMenuScene
+	//Plays background music while user is in MainMenuScene
 	bgplayer = new QMediaPlayer(this);
 	bgPlaylist = new QMediaPlaylist(this);
 	bgPlaylist->addMedia(QUrl("qrc:sounds/Sounds/MainMenuMusic.mp3"));
@@ -85,8 +85,10 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 */
 void MainMenuScene::playNightmare()
 {
+	// stops playing the background music
 	delete bgPlaylist;
 	delete bgplayer;
+	// goes to the game in Nightmare mode
 	game->launchGame(2); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
@@ -95,8 +97,10 @@ void MainMenuScene::playNightmare()
 */
 void MainMenuScene::playDifficult()
 {	
+	// stops playing the background music
 	delete bgPlaylist;
 	delete bgplayer;
+	// goes to the game in Difficult mode
 	game->launchGame(1); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
@@ -105,8 +109,10 @@ void MainMenuScene::playDifficult()
 */
 void MainMenuScene::playEasy()
 {	
+	// Stops the background music
 	delete bgPlaylist;
 	delete bgplayer;
+	// goes to the game in Easy mode
 	game->launchGame(0); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
