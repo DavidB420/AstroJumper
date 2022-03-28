@@ -1,3 +1,11 @@
+/*--------------------------------------------------------------------------------
+* David Badiei, Nathan Vuong
+* 06/13/2022
+* ICS4U1
+* Projectile.h
+* Header (definition file) for Projectile object
+*-------------------------------------------------------------------------------*/
+
 #ifndef PROJECTILE_H
 #define PROJECTILE_H
 
@@ -14,7 +22,6 @@ class Projectile : public QObject, public QGraphicsPixmapItem
 
 public:
 	Projectile(QGraphicsPixmapItem *parent = 0);
-	~Projectile();
 private:
 	QMediaPlayer* gunSfx;
 	QMediaPlayer* deathSfx;

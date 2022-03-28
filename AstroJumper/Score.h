@@ -1,3 +1,11 @@
+/*--------------------------------------------------------------------------------
+* David Badiei
+* 06/13/2022
+* ICS4U1
+* Score.h
+* Header (definition file) for Score object
+*-------------------------------------------------------------------------------*/
+
 #ifndef SCORE_H
 #define SCORE_H
 
@@ -10,7 +18,6 @@ class Score : public QGraphicsTextItem
 
 public:
 	Score(int difficulty, QGraphicsTextItem *parent = 0);
-	~Score();
 	void increaseScore();
 	int score, currentDifficulty;
 };

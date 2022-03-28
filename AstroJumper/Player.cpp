@@ -29,7 +29,7 @@ Player::Player(int difficulty, QGraphicsPixmapItem* parent)
 	playerPlatform = NULL;
 	deathSfxPlayed = false;
 
-	//Make player object be visible above all other objects
+	//Make player object be visible above all other objects, except the projectile
 	setZValue(69);
 
 	//Set default player sprite from resource file
