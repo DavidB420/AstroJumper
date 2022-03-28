@@ -22,7 +22,6 @@ class Game : public QGraphicsView
 
 public:
 	Game(QWidget *parent = 0);
-	~Game();
 	int currentDifficulty;
 	QGraphicsScene* scene;
 	Player* player;
