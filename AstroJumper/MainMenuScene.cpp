@@ -52,6 +52,13 @@ MainMenuScene::MainMenuScene(QGraphicsScene *parent)
 	creditsButton->move(425, 475);
 	QGraphicsProxyWidget* creditsButtonProxy = addWidget(creditsButton);
 	connect(creditsButton, SIGNAL(clicked()), this, SLOT(showCredits()));
+
+	bgplayer = new QMediaPlayer(this);
+	bgPlaylist = new QMediaPlaylist(this);
+	bgPlaylist->addMedia(QUrl("qrc:sounds/Sounds/MainMenuMusic.mp3"));
+	bgPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
+	bgplayer->setPlaylist(bgPlaylist);
+	bgplayer->play();
 }
 
 MainMenuScene::~MainMenuScene()
@@ -60,16 +67,22 @@ MainMenuScene::~MainMenuScene()
 
 void MainMenuScene::playNightmare()
 {
+	delete bgPlaylist;
+	delete bgplayer;
 	game->launchGame(2); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
 void MainMenuScene::playDifficult()
-{
+{	
+	delete bgPlaylist;
+	delete bgplayer;
 	game->launchGame(1); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 
 void MainMenuScene::playEasy()
-{
+{	
+	delete bgPlaylist;
+	delete bgplayer;
 	game->launchGame(0); //0 - Easy, 1 - Difficult, 2 - Nightmare
 }
 

@@ -124,6 +124,9 @@
     <Image Include="Images\creditsIcon.png">
       <Filter>Resource files\Images</Filter>
     </Image>
+    <Image Include="Images\icon.ico">
+      <Filter>Resource files\Images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\jump.mp3">
@@ -141,5 +144,18 @@
     <Media Include="Sounds\walking.mp3">
       <Filter>Resource files\Sounds</Filter>
     </Media>
+    <Media Include="Sounds\MainMenuMusic.mp3">
+      <Filter>Resource files\Sounds</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AstroJumper.rc">
+      <Filter>Resource files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

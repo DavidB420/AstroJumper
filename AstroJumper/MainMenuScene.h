@@ -5,6 +5,9 @@
 #include <QGraphicsScene>
 #include <QPushButton>
 #include <QIcon>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+
 
 class MainMenuScene : public QGraphicsScene
 {
@@ -13,6 +16,9 @@ class MainMenuScene : public QGraphicsScene
 public:
 	MainMenuScene(QGraphicsScene* parent = 0);
 	~MainMenuScene();
+private:
+	QMediaPlayer* bgplayer;
+	QMediaPlaylist* bgPlaylist;
 private slots:
 	void playNightmare();
 	void playDifficult();
