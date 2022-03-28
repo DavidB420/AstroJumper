@@ -1,15 +1,12 @@
 #ifndef HIGHSCORESCENE_H
 #define HIGHSCORESCENE_H
 
-#define WINDOWS
-//#define MACOS
-//#define LINUX
-
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QLineEdit>
 #include <QPushButton>
 #include <fstream>
+#include "os.h"
 #ifdef WINDOWS //Checks if we are compiling for Windows
 #include <windows.h>
 #endif

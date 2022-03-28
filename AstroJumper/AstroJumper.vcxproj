@@ -208,6 +208,7 @@
     <QtMoc Include="MainMenuScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="os.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

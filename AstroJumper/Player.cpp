@@ -63,6 +63,9 @@ void Player::keyPressEvent(QKeyEvent* event)
 		if (xPos >= 0)
 		{
 			xPos -= 15;
+			#ifdef MACOS
+				xPos -= 15;
+			#endif
 			angle = prevAngle;
 			
 			setPos(xPos, yPos);
@@ -77,6 +80,9 @@ void Player::keyPressEvent(QKeyEvent* event)
 		if (xPos <= 700)
 		{
 			xPos += 15;
+			#ifdef MACOS
+				xPos += 15;
+			#endif
 			angle = prevAngle;
 			setPos(xPos, yPos);
 		}
@@ -102,7 +108,15 @@ int Player::playerPhysics()
 {
 	if (yPos <= 500 && angle != -1)
 	{
-		dy = (VELOCITY * sin(angle * PI / 180) * time + 0.5 * (-9.8) * (time) * (time));
+		#ifdef WINDOWS
+			dy = (VELOCITY * sin(angle * PI / 180) * time + 0.5 * (-9.8) * (time) * (time));
+		#endif
+		#ifdef LINUX
+			dy = (VELOCITY * sin(angle * PI / 180) * time + 0.5 * (-9.8) * (time) * (time));
+		#endif
+		#ifdef MACOS
+			dy = (VELOCITY * sin(angle * PI / 180) * time + 0.5 * (-9.7) * (time) * (time));
+		#endif
 		//dx = VELOCITY * cos(angle * PI / 180) * time;
 		//xPos -= dx;
 		yPos -= dy;

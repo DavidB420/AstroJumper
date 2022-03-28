@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <math.h>
 #include "Platform.h"
+#include "os.h"
 #include <QMediaPlayer>
 //#include "Game.h"
 
