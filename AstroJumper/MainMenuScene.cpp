@@ -61,19 +61,16 @@ MainMenuScene::~MainMenuScene()
 void MainMenuScene::playNightmare()
 {
 	game->launchGame(2); //0 - Easy, 1 - Difficult, 2 - Nightmare
-
 }
 
 void MainMenuScene::playDifficult()
 {
 	game->launchGame(1); //0 - Easy, 1 - Difficult, 2 - Nightmare
-
 }
 
 void MainMenuScene::playEasy()
 {
 	game->launchGame(0); //0 - Easy, 1 - Difficult, 2 - Nightmare
-
 }
 
 void MainMenuScene::showInstructions()
@@ -88,8 +85,8 @@ void MainMenuScene::showInstructions()
 void MainMenuScene::showCredits()
 {
 	QMessageBox* mBox = new QMessageBox();
-	mBox->setText("David Lead Programmer\nNathan sound designer\nChidubem Music composer\nAndrew lead illustrator");
+	mBox->setText("David Badiei - Team Leader/Programmer\nNathan Vuong - Sound/Documentation\nChidubem Dimanochie - Music/Main Menu\nAndrew Miceli - Graphics Design");
 	mBox->setIcon(QMessageBox::Information);
-	mBox->setWindowTitle("Credit");
+	mBox->setWindowTitle("Credits");
 	mBox->show();
 }
